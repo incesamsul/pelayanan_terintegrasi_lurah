@@ -119,13 +119,13 @@
             <div class="page-header min-vh-100">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-                            <div class="card card-plain mt-8">
+                        <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto ">
+                            <div class="card card-plain ">
                                 <div class="card-header pb-0 text-left bg-transparent">
                                     <h3 class="font-weight-bolder  text-main ">
                                         Selamat Datang
                                     </h3>
-                                    <p class="mb-0">K means clustering</p>
+                                    <p class="mb-0">Pelayanan Terintegrasi</p>
 
                                     @if (session('fail'))
                                         <div class="alert alert-danger alert-dismissible fade show mt-3 mb-0">
@@ -169,8 +169,8 @@
                                 </div> --}}
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <img src="{{ asset('img/heroimg.png ') }}" alt="">
+                        <div class="col-md-6 d-flex align-items-center bg-gradient-primary-to-secondary">
+                            <img src="{{ asset('img/hero1.svg ') }}" alt="" class="w-75">
                         </div>
                     </div>
                 </div>
