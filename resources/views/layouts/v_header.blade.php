@@ -190,7 +190,7 @@ select:focus {
                     </li>
 
                     <li class="nav-item">
-                        <a id="liSkIzinMenikah" class="nav-link  " href="{{ URL::to('/sk-izin-menikah') }}">
+                        <a id="liSkIzinMenikah" class="nav-link  " href="{{ URL::to('/sk/sk-izin-menikah') }}">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -218,7 +218,7 @@ select:focus {
                     </li>
 
                     <li class="nav-item">
-                        <a id="liSktm" class="nav-link  " href="{{ URL::to('/sktm') }}">
+                        <a id="liSktm" class="nav-link  " href="{{ URL::to('/sk/sktm') }}">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -272,7 +272,7 @@ select:focus {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a id="liSkDomisili" class="nav-link  " href="{{ URL::to('/sk-domisili') }}">
+                        <a id="liSkDomisili" class="nav-link  " href="{{ URL::to('/sk/sk-domisili') }}">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -594,6 +594,10 @@ select:focus {
     @if (session('message'))
         {{ sweetAlert(session('message'), 'success') }}
     @endif
+    @if (session('success'))
+        {{ sweetAlert(session('success'), 'success') }}
+    @endif
+
     @if (session('error'))
         {{ sweetAlert(session('error'), 'warning') }}
     @endif

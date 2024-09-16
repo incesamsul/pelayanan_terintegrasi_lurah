@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tanaman;
 use App\Models\User;
-use App\Models\Wilayah;
 use Illuminate\Http\Request ;
 
 class General extends Controller
@@ -19,8 +17,7 @@ class General extends Controller
     public function dashboard()
     {
         $data['users'] = User::all()->count();
-        $data['tanaman'] = Tanaman::all()->count();
-        $data['wilayah'] = Wilayah::all()->count();
+
         return view('pages.dashboard.index', $data);
     }
 

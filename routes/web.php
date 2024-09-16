@@ -8,7 +8,7 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\General;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\KmeansController;
-use App\Http\Controllers\TanamanController;
+use App\Http\Controllers\SKController;
 use App\Http\Controllers\VikorController;
 use App\Http\Controllers\WilayahController;
 use Illuminate\Support\Facades\Route;
@@ -45,10 +45,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator,user']], function
     Route::get('/bantuan', [General::class, 'bantuan']);
     Route::post('/update_profile', [General::class, 'updateProfile']);
 
-    Route::get('/kmeans', [KmeansController::class, 'index']);
-    Route::get('/pemetaan', [KmeansController::class, 'pemetaan']);
-    Route::resource('tanaman', TanamanController::class);
-    Route::resource('wilayah', WilayahController::class);
+    Route::get('sk/{jenis_surat}/download' , [SKController::class, 'cetak']);
+    Route::post('sk/{jenis_surat}/accept/{id_request}' , [SKController::class, 'accept']);
+    Route::get('sk/{jenis_surat}/request' , [SKController::class, 'request']);
+    Route::get('sk/{jenis_surat}', [SKController::class, 'index']);
 
     Route::post('/ubah_foto_profile', [General::class, 'ubahFotoProfile']);
     Route::post('/ubah_role', [General::class, 'ubahRole']);

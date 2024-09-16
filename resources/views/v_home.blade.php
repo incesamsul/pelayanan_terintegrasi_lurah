@@ -83,7 +83,7 @@
                                         <a class="page-scroll" href="#about">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#pemetaan">Pemetaan</a>
+                                        <a class="page-scroll" href="#">Cara kerja</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="page-scroll" href="#download">Download</a>
@@ -229,7 +229,7 @@
 
     <!--====== DOWNLOAD PART START ======-->
 
-    <section id="download" class="download-area pt-70 pb-40">
+    {{-- <section id="download" class="download-area pt-70 pb-40">
         <div class="container">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 col-md-9">
@@ -254,7 +254,7 @@
                 </div>
             </div> <!-- row -->
         </div> <!-- container -->
-    </section>
+    </section> --}}
 
     <!--====== DOWNLOAD PART ENDS ======-->
 
