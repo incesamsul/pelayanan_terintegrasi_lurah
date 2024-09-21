@@ -95,27 +95,28 @@
         </div>
 
         </div>
-        @if ($request->jenis_surat == 'sktm')
+        @if($request)
+        @if ( $request->jenis_surat == 'sktm')
         <h4 class="text-center mb-0"><u>SURAT KETERANGAN TIDAK MAMPU</h4>
             @elseif ($request->jenis_surat == 'sk-izin-menikah')
             <h4 class="text-center mb-0"><u>SURAT KETERANGAN BELUM MENIKAH</h4>
                 @else
                 <h4 class="text-center mb-0"><u>SURAT DOMISILI</h4>
         @endif
-
-        <p class="text-center mt-0 ">NOMOR : {{ $request->nomor_surat ?? '' }}</p>
+        @endif
+        <p class="text-center mt-0 ">NOMOR : {{ $request ? $request->nomor_surat : '' }}</p>
         {{-- TABLE BIODATA MAHASISWA --}}
         <p class="mt-10">Yang bertanda tangan di bawah ini : </p>
         <table style="margin-left: 20px">
             <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td>{{ $request->admin->name }}</td>
+                <td>{{ $request->admin->name ?? '' }}</td>
             </tr>
             <tr>
                 <td>Jabatan</td>
                 <td>:</td>
-                <td>{{ $request->admin->jabatan }}</td>
+                <td>{{ $request->admin->jabatan ?? '' }}</td>
             </tr>
 
         </table>
@@ -126,33 +127,33 @@
             <tr>
                 <td>Nama</td>
                 <td>:</td>
-                <td>{{ $user->name }}</td>
+                <td>{{ $user->name ?? '' }}</td>
             </tr>
             <tr>
                 <td>Nik</td>
                 <td>:</td>
-                <td>{{ $user->nik }}</td>
+                <td>{{ $user->nik ?? '' }}</td>
             </tr>
             {{-- tempat lahir, jenis kelamin, status perkawinan, agama, pekerjaan, alamat  --}}
             <tr>
                 <td>Tempat, Tgl. Lahir</td>
                 <td>:</td>
-                <td>{{ $user->tempat_tanggal_lahir }}</td>
+                <td>{{ $user->tempat_tanggal_lahir ?? '' }}</td>
             </tr>
             <tr>
                 <td>Agama</td>
                 <td>:</td>
-                <td>{{ $user->agama }}</td>
+                <td>{{ $user->agama ?? '' }}</td>
             </tr>
             <tr>
                 <td>Pekerjaan</td>
                 <td>:</td>
-                <td>{{ $user->pekerjaan }}</td>
+                <td>{{ $user->pekerjaan ?? '' }}</td>
             </tr>
             <tr>
                 <td>Alamat</td>
                 <td>:</td>
-                <td>{{ $user->alamat }}</td>
+                <td>{{ $user->alamat ?? '' }}</td>
             </tr>
 
         </table>

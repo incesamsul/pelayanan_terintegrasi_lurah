@@ -21,6 +21,7 @@
                                     <th>Nama</th>
                                     <th>Jenis surat</th>
                                     <th>Nomor</th>
+                                    <th>Hp User</th>
                                     <th>Tgl. Surat</th>
                                     <th>status</th>
                                     <th>Aksi</th>
@@ -34,6 +35,7 @@
                                         <td>{{ $row->user->name }}</td>
                                         <td>{{ $row->jenis_surat }}</td>
                                         <td>{{ $row->nomor_surat ? $row->nomor_surat : 'Belum ada' }}</td>
+                                        <td>{{ $row->user->no_hp }}</td>
                                         <td>{{ $row->created_at }}</td>
                                         <td>
                                             @if ($row->status == 'Pending')
