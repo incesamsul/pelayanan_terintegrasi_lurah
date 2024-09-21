@@ -34,17 +34,18 @@ class General extends Controller
 
     public function updateProfile(Request $request)
     {
+
         User::where('id', auth()->user()->id)->update([
-            'berat_badan' => $request->berat_badan,
-            'tinggi_badan' => $request->tinggi_badan,
-            'usia' => $request->usia,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'aktivitas' => $request->aktivitas,
-            'kalori' => $request->kalori
+            'name' => $request->name,
+            'email' => $request->email,
+            'jabatan' => $request->jabatan,
+            'nik' => $request->nik,
+            'tempat_tanggal_lahir' => $request->tempat_tanggal_lahir,
+            'agama' => $request->agama,
+            'pekerjaan' => $request->pekerjaan,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp
         ]);
-
-
-
 
         return redirect()->back()->with('success', 'Profile updated successfully');
     }

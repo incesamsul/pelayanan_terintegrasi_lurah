@@ -16,6 +16,7 @@ class CreateRequestSuratTable extends Migration
         Schema::create('request_surat', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('admin_id');
             $table->string('jenis_surat');
             $table->string('nomor_surat');
             $table->string('status');
