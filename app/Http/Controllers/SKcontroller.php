@@ -37,10 +37,16 @@ class SKController extends Controller
 
         $data = RequestSurat::find($id_request);
 
-        $message = 'Halo, ' . $data->user->name . '. Permintaan anda untuk ' . $data->jenis_surat . ' sudah diterima. Nomor surat anda adalah ' . $request->nomor_surat . 'silahkan cetak surat di link berikut : ';
+        $message = 'Halo, ' . $data->user->name . '. Permintaan anda untuk ' . $data->jenis_surat . ' sudah diterima. Nomor surat anda adalah ' . $request->nomor_surat . 'silahkan cetak surat di link berikut : ' . 'http://localhost:3000/' . $data->jenis_surat . '/download';
 
         $client = new \GuzzleHttp\Client();
-        $res = $client->get('http://localhost:3000/' . $message . '/' . $data->user->no_hp . '?link=http://127.0.0.1:8000/sk/' . $data->jenis_surat . '/' . $data->user->no_hp . '/download');
+        $res = $client->post('http://localhost:3000/', [
+            'form_params' => [
+                'message' => $message,
+                'no_hp' => $data->user->no_hp,
+                'link' => 'http://127.0.0.1:8000/sk/' . $data->jenis_surat . '/' . $data->user->no_hp . '/download'
+            ]
+        ]);
 
         $data->update([
             'status' => 'Approved',
