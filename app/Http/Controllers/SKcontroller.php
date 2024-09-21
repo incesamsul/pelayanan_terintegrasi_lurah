@@ -39,7 +39,7 @@ class SKController extends Controller
             'nomor_surat' => $request->nomor_surat
         ]);
 
-        return redirect()->back()->with('success', 'Permintaan anda telah diterima');
+        return redirect()->back()->with('success', 'Permintaan telah diterima');
     }
 
     public function cetak()
