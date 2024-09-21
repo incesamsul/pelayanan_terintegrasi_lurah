@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\RequestSurat;
+use App\Models\User;
 use App\Models\wilayah;
 use Dompdf\Dompdf;
 use Illuminate\Http\Request;
@@ -33,20 +34,27 @@ class SKController extends Controller
 
     public function accept(Request $request, $jenis_surat, $id_request)
     {
+
+        $client = new \GuzzleHttp\Client();
+        $res = $client->get('http://localhost:3000/' . $jenis_surat);
+
         $data = RequestSurat::find($id_request);
         $data->update([
             'status' => 'Approved',
-            'nomor_surat' => $request->nomor_surat
+            'nomor_surat' => $request->nomor_surat,
+            'admin_id' => auth()->user()->id
         ]);
 
         return redirect()->back()->with('success', 'Permintaan anda telah diterima');
     }
 
-    public function cetak()
+    public function cetak($jenis_surat)
     {
+        $data['user'] = User::where('id', auth()->user()->id)->first();
+        $data['request'] = RequestSurat::where('user_id', auth()->user()->id)->where('jenis_surat', $jenis_surat)->first();
 
         // Load the view and pass the data
-        $html = view('pages.sk-izin-menikah.cetak')->render();
+        $html = view('pages.sk-izin-menikah.cetak', $data)->render();
 
         // Instantiate and use the Dompdf class
         $dompdf = new Dompdf();
