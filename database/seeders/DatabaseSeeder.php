@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
             // Enable foreign keys
             DB::statement('SET FOREIGN_KEY_CHECKS = 1');
         }
-        \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
     }
 }
