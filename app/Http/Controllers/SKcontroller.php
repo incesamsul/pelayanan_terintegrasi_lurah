@@ -31,9 +31,8 @@ class SKController extends Controller
         return redirect()->back()->with('success', 'Permintaan anda sedang diproses');
     }
 
-    public function accept(Request $request, $id_request)
+    public function accept(Request $request, $jenis_surat, $id_request)
     {
-
         $data = RequestSurat::find($id_request);
         $data->update([
             'status' => 'Approved',

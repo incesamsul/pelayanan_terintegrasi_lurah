@@ -1,7 +1,7 @@
 @extends('layouts.v_template')
 
 @section('content')
-    @if (auth()->user()->role == 'Administrator')
+    @if (auth()->user()->role == 'Administrator' || auth()->user()->role == 'user')
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -58,7 +58,7 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{{ URL::to('/' . $jenis_surat . '/accept/' . $row->id) }}" method="post">
+                                                                <form action="{{ URL::to('/sk/' . $jenis_surat . '/accept/' . $row->id) }}" method="post">
                                                                     @csrf
                                                                     <div class="mb-3">
                                                                         <label for="nomor_surat" class="form-label">Nomor Surat</label>
@@ -74,8 +74,12 @@
                                         @else
                                             @if ($row->status == 'Approved')
                                                 <td>
-                                                     <a class="btn btn-primary" href="{{ URL::to('/ ' . $jenis_surat . '/download') }}" class="text-white">Download</a>
+                                                     <a class="btn btn-primary" href="{{ URL::to('/sk/' . $jenis_surat . '/download') }}" class="text-white">Download</a>
                                                 </td>
+                                                @else
+                                                <td>
+                                                    Menunggu acc
+                                               </td>
                                             @endif
                                         @endif
                                     </tr>

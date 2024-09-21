@@ -1,16 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin;
-use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\CriteriaController;
-use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\General;
 use App\Http\Controllers\Home;
-use App\Http\Controllers\KmeansController;
 use App\Http\Controllers\SKController;
-use App\Http\Controllers\VikorController;
-use App\Http\Controllers\WilayahController;
 use Illuminate\Support\Facades\Route;
 
 /*
