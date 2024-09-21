@@ -51,10 +51,6 @@
                                 <input type="email" class="form-control" name="email" id="email" value="{{ auth()->user()->email }}">
                             </div>
                             <div class="gorm-group">
-                                <label for="jabatan">Jabatan</label>
-                                <input type="text" class="form-control" name="jabatan" id="jabatan" value="{{ auth()->user()->jabatan }}">
-                            </div>
-                            <div class="gorm-group">
                                 <label for="nik">Nik</label>
                                 <input type="text" class="form-control" name="nik" id="nik" value="{{ auth()->user()->nik }}">
                             </div>
