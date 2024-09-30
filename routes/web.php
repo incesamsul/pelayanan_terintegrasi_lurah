@@ -1,4 +1,4 @@
-<?php
+cetak<?php
 
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Auth\LoginController;
@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/postlogin', [LoginController::class, 'postLogin']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/', [Home::class, 'index']);
+Route::get('sk/{jenis_surat}/download' , [SKController::class, 'cetak']);
 
 
 Route::get('/tentang_aplikasi', [Home::class, 'tentangAplikasi']);
@@ -39,7 +40,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator,user']], function
     Route::get('/bantuan', [General::class, 'bantuan']);
     Route::post('/update_profile', [General::class, 'updateProfile']);
 
-    Route::get('sk/{jenis_surat}/download/{id_request}' , [SKController::class, 'cetak']);
     Route::post('sk/{jenis_surat}/accept/{id_request}' , [SKController::class, 'accept']);
     Route::get('sk/{jenis_surat}/request' , [SKController::class, 'request']);
     Route::get('sk/{jenis_surat}', [SKController::class, 'index']);

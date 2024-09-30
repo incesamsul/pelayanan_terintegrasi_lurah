@@ -38,17 +38,18 @@ class SKController extends Controller
 
         $data = RequestSurat::find($id_request);
 
-//         $message = 'Halo, ' . $data->user->name . '. Permintaan anda untuk ' . $data->jenis_surat . ' sudah diterima. Nomor surat anda adalah ' . $request->nomor_surat . '. Silahkan cetak surat di link berikut: ' . 'http://localhost:3000/' . $data->jenis_surat . '/download';
+        $message = 'Halo, ' . $data->user->name . '. Permintaan anda untuk ' . $data->jenis_surat . ' sudah diterima. Nomor surat anda adalah ' . $request->nomor_surat . '. Silahkan cetak surat di link berikut: ' . request()->getSchemeAndHttpHost() . '/sk/' . $data->jenis_surat . '/download';
 
-// $client = new \GuzzleHttp\Client();
-// $res = $client->post('http://localhost:3000/send_message', [
-//     'json' => [
-//         'message' => $message,
-//         'no_hp' => $data->user->no_hp,
-//         'link' => 'http://127.0.0.1:8000/sk/' . $data->jenis_surat . '/' . $data->user->no_hp . '/download'
-//     ]
-// ]);
-
+$client = new \GuzzleHttp\Client();
+$res = $client->post('http://localhost:3000/send_message', [
+    'json' => [
+        'message' => $message,
+        'phone' => $data->user->no_hp,
+        'link' => request()->getSchemeAndHttpHost() . '/sk/' . $data->jenis_surat . '/' . $data->user->no_hp . '/download'
+    ]
+]);
+        dump($res->getBody()->getContents());
+die;
 
         $data->update([
             'status' => 'Approved',
@@ -56,13 +57,20 @@ class SKController extends Controller
             'admin_id' => auth()->user()->id
         ]);
 
-        return redirect()->back()->with('success', 'Permintaan anda telah diterima');
+        return redirect()->back()->with('success', 'Permintaan telah diterima');
     }
 
     public function cetak($jenis_surat, $id_request)
     {
-        $data['user'] = User::where('id', auth()->user()->id)->first();
-        $data['request'] = RequestSurat::where('id', $id_request)->first();
+        if(auth()->user())
+        {
+            $data['user'] = User::where('id', auth()->user()->id)->first();
+        $data['request'] = RequestSurat::where('user_id', auth()->user()->id)->where('jenis_surat', $jenis_surat)->first();
+
+        } else {
+            $data['user'] = null;
+            $data['request'] = null;
+        }
 
         // Load the view and pass the data
         $html = view('pages.sk-izin-menikah.cetak', $data)->render();
