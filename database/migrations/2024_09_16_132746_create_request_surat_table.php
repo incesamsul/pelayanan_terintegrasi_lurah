@@ -19,6 +19,7 @@ class CreateRequestSuratTable extends Migration
             $table->unsignedBigInteger('admin_id');
             $table->string('jenis_surat');
             $table->string('nomor_surat');
+            $table->string('tanda_tangan');
             $table->string('status');
             $table->timestamps();
         });

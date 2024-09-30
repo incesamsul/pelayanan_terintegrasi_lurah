@@ -161,6 +161,34 @@
         <p>Yang tersebut namanya di atas adalah penduduka kelurahan Tamalanrea Jaya Kecamatan Tamalanrea Kota Makassar dan berdomisili pada alamat tersebut diatas sesuai pengantar Nomor 90/pj RW.01/TJ tanggal 11 September 2024 yang bersangkutan <strong>Belum menikah </strong></p>
         <p>Demikian surat keterangan ini diberikan dan dipergunakan <strong>KELENGKAPAN ADMINISTRASI</strong></p>
 
+        {{-- tanda tangan --}}
+        <table border="0" class="full-width">
+            <tr>
+                <td style="width: 50%"></td>
+                <td style="width: 50%"></td>
+                <td style="width: 50%">Makassar,{{ Date('d-m-Y') }}</td>
+            </tr>
+
+            <tr>
+                <td style="width: 50%"></td>
+                <td style="width: 50%"></td>
+                <td style="width: 50%">{{ $request->admin->jabatan }}</td>
+            </tr>
+            <tr>
+                <td style="height: 50px"></td>
+                <td style="height: 50px"></td>
+                <td style="height: 50px; position: relative">
+                    <img src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents('img/verified.png')) }}"
+                    alt="image" width="70">
+                    <img style="position: absolute; left:0; top:0; width: 170px" src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents('storage/signatures/' . $request->tanda_tangan)) }}"
+                    alt="image" width="70"></td>
+            </tr>
+            <tr>
+                <td style="width: 50%"></td>
+                <td style="width: 50%"></td>
+                <td style="width: 50%"><strong>{{ $request->admin->name }}</strong></td>
+            </tr>
+        </table>
 
     </div>
 </body>

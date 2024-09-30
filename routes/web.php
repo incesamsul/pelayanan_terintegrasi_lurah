@@ -39,13 +39,16 @@ Route::group(['middleware' => ['auth', 'ceklevel:Administrator,user']], function
     Route::get('/bantuan', [General::class, 'bantuan']);
     Route::post('/update_profile', [General::class, 'updateProfile']);
 
-    Route::get('sk/{jenis_surat}/download' , [SKController::class, 'cetak']);
+    Route::get('sk/{jenis_surat}/download/{id_request}' , [SKController::class, 'cetak']);
     Route::post('sk/{jenis_surat}/accept/{id_request}' , [SKController::class, 'accept']);
     Route::get('sk/{jenis_surat}/request' , [SKController::class, 'request']);
     Route::get('sk/{jenis_surat}', [SKController::class, 'index']);
 
     Route::post('/ubah_foto_profile', [General::class, 'ubahFotoProfile']);
     Route::post('/ubah_role', [General::class, 'ubahRole']);
+
+    Route::post('/save-signature', [SKController::class, 'saveSignature'])->name('save.signature');
+
 
 
 });
