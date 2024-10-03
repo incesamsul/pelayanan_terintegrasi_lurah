@@ -38,8 +38,8 @@ class SKController extends Controller
 
         $data = RequestSurat::find($id_request);
 
-        $message = 'Halo, ' . $data->user->name . '. Permintaan anda untuk ' . $data->jenis_surat . ' sudah diterima. Nomor surat anda adalah ' . $request->nomor_surat . '. Silahkan cetak surat di link berikut: ' . request()->getSchemeAndHttpHost() . '/sk/' . $data->jenis_surat . '/download';
-
+        // $message = 'Halo, ' . $data->user->name . '. Permintaan anda untuk ' . $data->jenis_surat . ' sudah diterima. Nomor surat anda adalah ' . $request->nomor_surat . '. Silahkan cetak surat di link berikut: ' . request()->getSchemeAndHttpHost() . '/sk/' . $data->jenis_surat . '/download';
+        $message = " Pengajuan telah diterima, Kami akan langsung mengirim surat yang telah di ajukan dalam 1x24 jam ";
 $client = new \GuzzleHttp\Client();
 $res = $client->post('http://localhost:3000/send_message', [
     'json' => [
